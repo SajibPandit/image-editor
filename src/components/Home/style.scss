@@ -14,9 +14,175 @@
     .card_header {
       text-align: center;
       letter-spacing: 2px;
+      padding: 10px;
       h2 {
         text-transform: uppercase;
         font-weight: 300;
+      }
+    }
+    .card_body {
+      display: flex;
+      justify-content: center;
+      .sidebar {
+        .reset{
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 8px;
+            button{
+                padding: 8px;
+                border-radius: 3px;
+                outline: none;
+                border: 1px solid #dad7d7;
+                cursor: pointer;
+                color: #fff;
+                font-weight: 600;
+                text-transform: capitalize;
+                font-size: 15px;
+                background-color:#115811;
+            }
+            .save{
+                background-color: #4a55f3;
+            }
+        }
+        span {
+          font-size: 15px;
+          color: #404040;
+          display: block;
+          margin-bottom: 8px;
+        }
+        .side_body {
+          width: 250px;
+          border: 1px solid #c3c5c4;
+          padding: 8px;
+          height: 300px;
+          .filter_keys {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 5px;
+            button.active {
+              background-color: rgb(84, 93, 216);
+              color: #fff;
+            }
+            button {
+              padding: 8px;
+              background-repeat: 3px;
+              border: 1px solid #dad7d7;
+              cursor: pointer;
+              color: #404040;
+              text-transform: capitalize;
+            }
+          }
+          .filter_slider {
+            margin: 15px 0;
+            .label_bar {
+              margin-bottom: 4px;
+              display: flex;
+              justify-content: space-between;
+              label,
+              span {
+                color: #404040;
+                font-size: 15px;
+                text-transform: capitalize;
+              }
+            }
+            input {
+              width: 100%;
+            }
+          }
+
+          .rotate{
+            label{
+                margin-bottom: 8px;
+                display: block;
+                font-size: 15px;
+                color:#404040;
+            }
+            .icons{
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                grid-gap: 5px;
+                div{
+                    border: 1px solid rgb(197,194,194);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 8px 5px;
+                    cursor: pointer;
+                }
+            }
+          }
+        }
+      }
+
+      .image_section{
+        margin-left: 8px;
+        width: 350px;
+        background-color: #f0f0f0;
+        height: 300px;
+        .image{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                object-fit: scale-down;
+                transition: all 0.5s;
+            }
+            label{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                border: dotted;
+                border-color: #c5c9c5;
+                cursor: pointer;
+                svg{
+                    font-size: 40px;
+                    color: #b4acac;
+                }
+                span{
+                    color: #404040;
+                }
+            }
+        }
+        .image_select{
+            margin: 20px 0px;
+            display: flex;
+            justify-content: flex-end;
+            input{
+                display: none;
+            }
+            label,button{
+                padding: 8px;
+                border-radius: 3px;
+                outline: none;
+                border: 1px solid #dad7d7;
+                cursor: pointer;
+                color: #fff;
+                font-weight: 600;
+                text-transform: capitalize;
+                font-size: 15px;
+            }
+            .undo,.redo{
+                background-color: #4a55f3;
+                margin-left: 8px;
+                color: #fff;
+                padding: 5px 10px;
+                font-size: 18px;
+            }
+            label{
+                background-color: #115811;
+                margin-left: 8px;
+            }
+            .crop{
+                background-color: #8e33b7;
+                margin-left: 8px;
+            }
+        }
       }
     }
   }
