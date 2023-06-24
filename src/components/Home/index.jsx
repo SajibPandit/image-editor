@@ -1,9 +1,35 @@
+import { useState } from "react";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
 import { CgMergeHorizontal, CgMergeVertical } from "react-icons/cg";
-import { IoMdUndo, IoMdRedo, IoIosAdd, IoIosImage } from "react-icons/io";
+import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import "./style.scss";
 
 export default function Home() {
+  const [state, setState] = useState({
+    image: "",
+    brightness: 20,
+    grayscale: 0,
+    sepia: 0,
+    seturation: 100,
+    contrast: 100,
+    hueRotate: 0,
+    rotate: 0,
+    vertical: 1,
+    horizontal: 1,
+  });
+
+  const handleChange = (e) => {
+    if (e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setState({
+          ...state,
+          image: reader.result,
+        });
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
   const filterElement = [
     {
       name: "brightness",
@@ -67,20 +93,29 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
             </div>
             <div className="reset">
-                <button>Reset</button>
-                <button className="save">Save Image</button>
-              </div>
+              <button>Reset</button>
+              <button className="save">Save Image</button>
+            </div>
           </div>
 
           <div className="image_section">
             <div className="image">
+              {state.image ? (
+                <img
+                  style={{
+                    filter: `brightness(${state.brightness}%) grayscale(${state.grayscale}%) sepia(${state.sepia}%) saturate(${state.seturation}%) contrast(${state.contrast}%) hue-rotate(${state.hueRotate}deg)`,transform:`rotate(${state.rotate}deg),scale(${state.vertical}),scale(${state.horizontal})`
+                  }}
+                  src={state.image}
+                  alt="Image"
+                />
+              ) : (
                 <label htmlFor="choose">
-                    <IoIosImage/>
-                    <span>Choose Image</span>
+                  <IoIosImage />
+                  <span>Choose Image</span>
                 </label>
+              )}
             </div>
             <div className="image_select">
               <button className="undo">
@@ -91,7 +126,7 @@ export default function Home() {
               </button>
               <button className="crop">Crop Image</button>
               <label htmlFor="choose">Choose Image</label>
-              <input type="file" name="" id="choose" />
+              <input onChange={handleChange} type="file" name="" id="choose" />
             </div>
           </div>
         </div>
